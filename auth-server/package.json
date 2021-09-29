@@ -1,0 +1,11 @@
+{
+  "name": "auth-server",
+  "version": "1.0.0",
+  "description": "Authentication service using AWS lambda for Meet App to access Google Calendar API",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mito.this",
+  "license": "ISC"
+}

@@ -120,6 +120,9 @@ Starts the development server.
 	
 * npm run build
 Bundles the app into static files for production.
+
+* npm run deploy
+Builds the project and uploads it to Github pages
 	
 * npm test
 Starts the test runner.
