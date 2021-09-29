@@ -95,7 +95,7 @@ FEATURE 5: DATA VISUALIZATION
 
 ## Built With
 Created using React following a test-driven development (TDD) approach (coverage rate >= 90%).
-App is according to Lighthouse’s PWA checklist (https://developers.google.com/web/tools/lighthouse/)
+App is according to [Lighthouse’s PWA checklist](https://developers.google.com/web/tools/lighthouse/)
 
 - Major languages: Javascript
 - Frameworks: React (CRA)
@@ -103,8 +103,8 @@ App is according to Lighthouse’s PWA checklist (https://developers.google.com/
 * React Bootstrap for styling
 * axios (async/await) for AJAX
 * recharts to display charts
-* Google Calendar API (and OAuth2 authentication) to fetch upcoming events
-* Serverless function hosted on AWS
+* [Google Calendar API](https://developers.google.com/calendar) (and OAuth2 authentication) to fetch upcoming events 
+* Serverless function hosted on AWS lambda (Faas)
 * Puppeteer (end-to-end tests)
 * Cucumber (acceptance testing)
 
