@@ -104,6 +104,7 @@ App is according to [Lighthouse’s PWA checklist](https://developers.google.com
 * axios (async/await) for AJAX
 * recharts to display charts
 * [Google Calendar API](https://developers.google.com/calendar) (and OAuth2 authentication) to fetch upcoming events 
+* serverless package with aws-nodejs template
 * Serverless function hosted on AWS lambda (Faas)
 * Puppeteer (end-to-end tests)
 * Cucumber (acceptance testing)
