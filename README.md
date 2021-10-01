@@ -107,7 +107,7 @@ App is according to [Lighthouse’s PWA checklist](https://developers.google.com
 * React Bootstrap for styling
 * axios (async/await) for AJAX
 * recharts to display charts
-* Jest (unit-testing)
+* Jest and Enzyme (shallow rendering) for unit-testing
 * Puppeteer (end-to-end tests)
 * Cucumber (acceptance testing)
 
