@@ -9,7 +9,7 @@ describe('<CitySearch /> component', () => {
     beforeAll(() => {
         locations = extractLocations(mockData);
         // shallowly render the App component (= without a DOM or any children) and return a wrapper for the tests
-        CitySearchWrapper = shallow(<CitySearch locations={locations} />);        
+        CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => { }} />); // updateEvents is a prop (implented in integration testing) needed to simulate the click on a suggestion (line 59)
     });
 
     test('render text input', () => {
