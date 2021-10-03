@@ -43,7 +43,7 @@ describe('<CitySearch /> component', () => {
     test('suggestion list match the query when changed', () => {
         CitySearchWrapper.setState({ query: '', suggestions: [] });
         CitySearchWrapper.find(".city").simulate("change", {
-            target: { value: "Berlin" }, // why is there a "," at the end???
+            target: { value: "Berlin" }
         });
         const query = CitySearchWrapper.state("query");
         const filteredLocations = locations.filter((location) => {
@@ -51,7 +51,7 @@ describe('<CitySearch /> component', () => {
         });
         expect(CitySearchWrapper.state("suggestions")).toEqual(filteredLocations);
     });
-    test("selecting a suggestion should change query state", () => {
+    test('selecting a suggestion should change query state', () => {
         CitySearchWrapper.setState({
             query: 'Berlin'
         });
