@@ -9,11 +9,14 @@ describe('<Event /> component', () => {
         event = mockData[0];
         EventWrapper = shallow(<Event event={event} />);
     });
-    test('render collapsed event', () => {
+    test('render inital collapsed event view', () => {
         expect(EventWrapper.find('.title')).toHaveLength(1);
         expect(EventWrapper.find('.date')).toHaveLength(1);
         expect(EventWrapper.find('.location')).toHaveLength(1);
         expect(EventWrapper.find('.toggleDetails')).toHaveLength(1);
+        expect(EventWrapper.find('.toggleDetails').text()).toBe('Show details');
+        expect(EventWrapper.find('.link')).toHaveLength(0);
+        expect(EventWrapper.find('.description')).toHaveLength(0);
     });
     test('render additional elements in expanded view', () => {
         EventWrapper.setState({
@@ -21,11 +24,20 @@ describe('<Event /> component', () => {
         });
         expect(EventWrapper.find('.link')).toHaveLength(1);
         expect(EventWrapper.find('.description')).toHaveLength(1);
+        expect(EventWrapper.find('.toggleDetails').text()).toBe('Hide details');
     });
     test('toggle state of "collapsed" onClick', () => {
         const before = EventWrapper.state('collapsed');
         EventWrapper.find('.toggleDetails').simulate('click');
         expect(EventWrapper.state('collapsed')).toBe(!before);
+    });
+    test('hide additional elements in collapsed view', () => {
+        EventWrapper.setState({
+            collapsed: true
+        });
+        expect(EventWrapper.find('.link')).toHaveLength(0);
+        expect(EventWrapper.find('.description')).toHaveLength(0);
+        expect(EventWrapper.find('.toggleDetails').text()).toBe('Show details');
     });
     test('render correct event info', () => {
         EventWrapper.setState({
