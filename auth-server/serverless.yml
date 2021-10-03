@@ -121,7 +121,7 @@ functions:
 #            host: example.com
 #            path: /hello
 
-#    Define function environment variables here
+#    Define function environment variables here (will only be available to that function, not globally as when defined in the Provider section)
 #    environment:
 #      variable2: value2
 

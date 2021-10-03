@@ -107,7 +107,7 @@ App is according to [Lighthouse’s PWA checklist](https://developers.google.com
 * React Bootstrap for styling
 * axios (async/await) for AJAX
 * recharts to display charts
-* Jest and Enzyme (shallow rendering) for unit-testing
+* Jest and Enzyme (shallow rendering for unit-testing & full rendering for integration-testing)
 * Puppeteer (end-to-end tests)
 * Cucumber (acceptance testing)
 
@@ -118,20 +118,13 @@ The application itself is also hosted online (gh-pages) to make it shareable and
 [Live Demo Link](https://MitoMonkey.github.io/meet)
 
 ## CRA Usage
-* npm start
-Starts the development server.
-	
-* npm run build
-Bundles the app into static files for production.
-
-* npm run deploy
-Builds the project and uploads it to Github pages
-	
-* npm test
-Starts the test runner.
-	
-* npm run eject
-Removes CRA and copies build dependencies, configuration files and scripts into the app directory. If you do this, you can’t go back!
+* `npm start` - Starts the development server.
+* `npm run build` - Bundles the app into static files for production.
+* `npm run deploy`- Builds the project and uploads it to Github pages.
+* `npm test` - Starts the Jest unit test runner, leaving it in watch mode.
+* `npm run coverage` - Starts a Jest unit test run to evaluate test coverage.
+* `npm run eject` - Removes CRA and copies build dependencies, configuration files and scripts into the app directory. If you do this, you can’t go back!
+* in "static-site-test" folder `http-server` - starts a local test server for the OAuth2 process ("auth-server" folder).
 
 ### Run tests
 
