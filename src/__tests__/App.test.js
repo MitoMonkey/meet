@@ -27,6 +27,7 @@ describe('<App /> integration', () => { // scope for integration testing
     test('App passes "events" state as a prop to EventList', () => {
         const AppWrapper = mount(<App />);
         const AppEventsState = AppWrapper.state('events');
+        // console.log('events: ' + AppEventsState);
         expect(AppEventsState).not.toEqual(undefined);
         expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
         AppWrapper.unmount();
@@ -60,4 +61,23 @@ describe('<App /> integration', () => { // scope for integration testing
         expect(AppWrapper.state('events')).toEqual(allEvents);
         AppWrapper.unmount();
     });
+    test('Render EventList with max length according to numberOfEvents state', async () => {
+        const AppWrapper = mount(<App />);
+        const allEvents = await getEvents();
+        AppWrapper.setState({ numberOfEvents: 1, events: allEvents});
+        const EventListWrapper = AppWrapper.find(EventList);
+        expect(EventListWrapper.props().events.length).toBeLessThanOrEqual(AppWrapper.state('numberOfEvents'));
+        AppWrapper.unmount();
+    });
+    test('Change max length of event list when NumberOfEvents input value changes', async () => {
+        const AppWrapper = mount(<App />);
+        const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+        const eventObject = { target: { value: 3 } };
+        await NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject);
+        expect(AppWrapper.state('numberOfEvents')).toEqual(NumberOfEventsWrapper.state('number'));
+        const EventListWrapper = AppWrapper.find(EventList);
+        expect(EventListWrapper.props().events.length).toBeLessThanOrEqual(NumberOfEventsWrapper.state('number'));
+        AppWrapper.unmount();
+    });
+     
 });

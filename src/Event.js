@@ -23,10 +23,7 @@ class Event extends Component {
                     <p className="description">{event.description}</p>
                 </div>
             }
-            {(this.state.collapsed)
-                ? <button className="toggleDetails" onClick={() => this.handleClick()}>Show details</button>
-                : <button className="toggleDetails" onClick={() => this.handleClick()}>Hide details</button>
-            }
+            <button className="toggleDetails" onClick={() => this.handleClick()}>{(this.state.collapsed) ? 'Show details' : 'Hide details'}</button>            
         </div>;
     }
 }
