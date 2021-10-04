@@ -106,6 +106,7 @@ App is according to [Lighthouse’s PWA checklist](https://developers.google.com
 * [Google Calendar API](https://developers.google.com/calendar) (and OAuth2 authentication) to fetch upcoming events 
 * (React Bootstrap for styling)
 * axios (async/await) for AJAX
+* nprogress package to display a progress bar while events are fetched
 * recharts to display charts
 * Jest and Enzyme (shallow rendering for unit-testing & full rendering for integration-testing)
 * Puppeteer (end-to-end tests)
