@@ -7,7 +7,7 @@ export const getAccessToken = async () => {
     const tokenCheck = accessToken && (await checkToken(accessToken));
 
     if (!accessToken || tokenCheck.error) {
-        await localStorage.removeItem("access_token"); // why is this async?
+        await localStorage.removeItem("access_token");
         const searchParams = new URLSearchParams(window.location.search);
         const code = await searchParams.get("code");
         if (!code) {
@@ -27,7 +27,6 @@ const checkToken = async (accessToken) => {
     )
         .then((res) => res.json())
         .catch((error) => error.json());
-
     return result;
 };
 const getToken = async (code) => {
@@ -39,9 +38,7 @@ const getToken = async (code) => {
             return res.json();
         })
         .catch((error) => error);
-
     access_token && localStorage.setItem("access_token", access_token);
-
     return access_token;
 };
 
@@ -66,7 +63,7 @@ export const getEvents = async () => {
         NProgress.done();
         return mockData;
     }
-    
+
     const token = await getAccessToken();
     if (token) {
         removeQuery(); // remove the "code" from the URL
