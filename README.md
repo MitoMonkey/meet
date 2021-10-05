@@ -126,8 +126,8 @@ The application itself is also hosted online (gh-pages) to make it shareable and
 ### Deployment
 * `serverless deploy` to update the functions on AWS lambda
 * `npm start` - Starts the development server.
-* `npm run build` - Bundles the app into static files for production.
-* `npm run deploy`- Builds the project and uploads it to Github pages.
+* `npm run build` - CRA commant to bundle the app into static files for production.
+* `npm run deploy`- CRA commant to build the project and uploads it to Github pages.
 * `npm run eject` - Removes CRA and copies build dependencies, configuration files and scripts into the app directory. If you do this, you can’t go back!
 
 ## Author:
