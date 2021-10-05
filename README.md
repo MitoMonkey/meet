@@ -109,8 +109,8 @@ App is according to [Lighthouse’s PWA checklist](https://developers.google.com
 * nprogress package to display a progress bar while events are fetched
 * recharts to display charts
 * Jest and Enzyme (shallow rendering for unit-testing & full rendering for integration-testing)
+* Jest-Cucumber (BDD acceptance testing)
 * Puppeteer (end-to-end tests)
-* Cucumber (acceptance testing)
 
 The application itself is also hosted online (gh-pages) to make it shareable and installable. 
 

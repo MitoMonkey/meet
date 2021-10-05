@@ -16,9 +16,11 @@ class NumberOfEvents extends Component {
     render() {
         return (
             <div className="NumberOfEvents">
+                <label for="numberInput">Limit length of event list</label>
                 <input
                     type="number"
                     className="numberInput"
+                    id="numberInput"
                     value={this.state.number}
                     // onChange={this.props.updateEvents(undefined, this.state.number)}
                     onChange={this.handleInputChanged}
