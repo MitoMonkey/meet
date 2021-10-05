@@ -61,6 +61,7 @@ describe('<App /> integration', () => { // scope for integration testing
         expect(AppWrapper.state('events')).toEqual(allEvents);
         AppWrapper.unmount();
     });
+
     test('Render EventList with max length according to numberOfEvents state', async () => {
         const AppWrapper = mount(<App />);
         const allEvents = await getEvents();
@@ -79,5 +80,21 @@ describe('<App /> integration', () => { // scope for integration testing
         expect(EventListWrapper.props().events.length).toBeLessThanOrEqual(NumberOfEventsWrapper.state('number'));
         AppWrapper.unmount();
     });
-     
+    test('keep max length of event list when city is selected', async () => {
+        const AppWrapper = mount(<App />);
+        const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+        const CitySearchWrapper = AppWrapper.find(CitySearch);
+        const EventListWrapper = AppWrapper.find(EventList);
+        const eventObject = { target: { value: 1 } };
+        await NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject);
+        const locations = extractLocations(mockData);
+        CitySearchWrapper.setState({ suggestions: locations });
+        const suggestions = CitySearchWrapper.state('suggestions');
+        const selectedIndex = Math.floor(Math.random() * (suggestions.length)); // will evaluate to an integer value ranging from 0 to suggestion.length - 1
+        const selectedCity = suggestions[selectedIndex];
+        await CitySearchWrapper.instance().handleItemClicked(selectedCity); // async because handleItemClicked also leads to a call of getEvents()
+        expect(EventListWrapper.props().events.length).toBeLessThanOrEqual(NumberOfEventsWrapper.state('number'));
+        expect(AppWrapper.state('numberOfEvents')).toEqual(NumberOfEventsWrapper.state('number'));
+        AppWrapper.unmount();
+    });     
 });

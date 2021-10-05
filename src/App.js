@@ -13,12 +13,11 @@ class App extends Component {
     numberOfEvents: 32
   }
 
-  updateEvents = (location, eventCount) => {
+  updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ? events : events.filter((event) => event.location === location);
       this.setState({
-        events: locationEvents,
-        numberOfEvents: eventCount
+        events: locationEvents
       });
     });
   } 
@@ -27,14 +26,17 @@ class App extends Component {
       // let eventsToRender;
       if (location) {
         events = (location === 'all') ? events : events.filter((event) => event.location === location);
+        this.setState({
+          events: events
+        });
       }
       if (eventCount) {
         events = (eventCount) ? events.slice(0, eventCount) : events;
+        this.setState({
+          numberOfEvents: eventCount,
+          events: events // PROPLEM: If location is undefined in this instance, but was set previously, it will be reset now
+        });
       }
-      this.setState({
-        numberOfEvents: eventCount,
-        events: events
-      });
     });
   } */
 
