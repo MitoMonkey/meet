@@ -18,12 +18,12 @@ class Event extends Component {
             <p className="location">{event.location}</p>
             {(this.state.collapsed)
               ? null
-                : <div>
+                : <div className="eventExtra">
                     <a href={event.htmlLink} className="link">See details on google calendar</a>
                     <p className="description">{event.description}</p>
                 </div>
             }
-            <button className="toggleDetails" onClick={() => this.handleClick()}>{(this.state.collapsed) ? 'Show details' : 'Hide details'}</button>            
+            <button className="toggleDetails details-btn" onClick={() => this.handleClick()}>{(this.state.collapsed) ? 'Show details' : 'Hide details'}</button>
         </div>;
     }
 }
