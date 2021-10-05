@@ -4,9 +4,11 @@ import NumberOfEvents from '../NumberOfEvents';
 
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsWrapper;
+    let updateListLength = jest.fn(); // jest mock function
+
     beforeAll(() => {
         // shallowly render the App component (= without a DOM or any children) and return a wrapper for the tests
-        NumberOfEventsWrapper = shallow(<NumberOfEvents updateListLength={() => {}}/>);
+        NumberOfEventsWrapper = shallow(<NumberOfEvents updateListLength={updateListLength} />);
     });
     test('render text input', () => {
         expect(NumberOfEventsWrapper.find('.numberInput')).toHaveLength(1);
@@ -22,5 +24,6 @@ describe('<NumberOfEvents /> component', () => {
         const eventObject = { target: { value: 15 } };
         NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject);
         expect(NumberOfEventsWrapper.state('number')).toBe(15);
-    });
+        expect(updateListLength).toHaveBeenCalled(); // make sure updateListLength function is called
+    });    
 });
