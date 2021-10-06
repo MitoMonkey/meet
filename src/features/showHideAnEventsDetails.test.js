@@ -29,11 +29,11 @@ defineFeature(feature, test => {
             EventWrapper = shallow(<Event event={event} />);
         });
 
-        when('the user clicks on one event', () => {
+        when('the user clicks "Show Details" on an event', () => {
             EventWrapper.find('.details-btn').at(0).simulate('click');
         });
 
-        then('the user should see a expanded view with details of the event', () => {
+        then('the user should see a expanded view with details of that event', () => {
             expect(EventWrapper.find('.eventExtra')).toHaveLength(1);
         });
     });
@@ -46,11 +46,11 @@ defineFeature(feature, test => {
             expect(EventWrapper.find('.eventExtra')).toHaveLength(1);
         });
 
-        when('the user returns to the list of events', () => {
+        when('the user clicks "Hide Details"', () => {
             EventWrapper.find('.details-btn').at(0).simulate('click');
         });
 
-        then('the user details of the event should collapse to show the full list of events again', () => {
+        then('the details of that event should collapse/hide', () => {
             expect(EventWrapper.find('.eventExtra')).toHaveLength(0);
         });
     });

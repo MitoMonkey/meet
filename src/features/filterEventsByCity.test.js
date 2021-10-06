@@ -20,7 +20,7 @@ defineFeature(feature, test => {
 
         then('the user should see the list of upcoming events.', () => {
             AppWrapper.update(); // because getting events is async
-            expect(AppWrapper.find('.event').hostNodes()).toHaveLength(mockData.length);
+            expect(AppWrapper.find('.event').hostNodes()).toHaveLength(mockData.length); // sufficient because we know that mockData.length < 32
         });
     });
 
