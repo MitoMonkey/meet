@@ -1,14 +1,9 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import NumberOfEvents from '../NumberOfEvents';
-import EventList from '../EventList';
+import { mount } from 'enzyme';
 import App from '../App';
-import Event from '../Event';
-import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
-const events = mockData;
 
 defineFeature(feature, test => {
     test('When user hasn’t specified a number, 32 is the default number.', ({ given, when, then }) => {
