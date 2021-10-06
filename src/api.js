@@ -4,10 +4,13 @@ import NProgress from 'nprogress';
 
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
-    const tokenCheck = accessToken && (await checkToken(accessToken));
+    
+    // Check if accessToken is truthy, then set the value of tokenCheck to the result of `await checkToken(accessToken);`. 
+    // If accessToken is falsy, set tokenCheck to false
+    const tokenCheck = accessToken && (await checkToken(accessToken)); 
 
     if (!accessToken || tokenCheck.error) {
-        await localStorage.removeItem("access_token");
+        localStorage.removeItem("access_token"); // removed "await"
         const searchParams = new URLSearchParams(window.location.search);
         const code = await searchParams.get("code");
         if (!code) {
@@ -17,7 +20,7 @@ export const getAccessToken = async () => {
             const { authUrl } = results.data;
             return (window.location.href = authUrl);
         }
-        return code && getToken(code);
+        return code && getToken(code); // run `getToken(code)` only if `code` is truthy (meaning it is not undefined), otherwise return "false"
     }
     return accessToken;
 }
@@ -38,7 +41,7 @@ const getToken = async (code) => {
             return res.json();
         })
         .catch((error) => error);
-    access_token && localStorage.setItem("access_token", access_token);
+    access_token && localStorage.setItem("access_token", access_token); // only setItem when access_token is truthy
     return access_token;
 };
 
