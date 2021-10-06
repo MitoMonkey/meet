@@ -24,23 +24,33 @@ describe('<App /> component', () => { // create "scope" (=a group of related tes
 });
 
 describe('<App /> integration', () => { // scope for integration testing
+    let AppWrapper;
+    beforeEach(() => {
+        AppWrapper = mount(<App />);
+    })
+    afterEach(() => {
+        AppWrapper.unmount();
+    })
+    
     test('App passes "events" state as a prop to EventList', () => {
-        const AppWrapper = mount(<App />);
+        //const AppWrapper = mount(<App />);
+        AppWrapper.update();
         const AppEventsState = AppWrapper.state('events');
-        // console.log('events: ' + AppEventsState);
+        console.log('events: ' + AppEventsState);
         expect(AppEventsState).not.toEqual(undefined);
         expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
     });
     test('App passes "locations" state as a prop to CitySearch', () => {
-        const AppWrapper = mount(<App />);
+        // const AppWrapper = mount(<App />);
+        AppWrapper.update();
         const AppLocationsState = AppWrapper.state('locations');
         expect(AppLocationsState).not.toEqual(undefined);
         expect(AppWrapper.find(CitySearch).props().locations).toEqual(AppLocationsState);
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
     });
     test('get list of events matching the city selected by the user', async () => {
-        const AppWrapper = mount(<App />);
+        // const AppWrapper = mount(<App />);
         const CitySearchWrapper = AppWrapper.find(CitySearch);
         const locations = extractLocations(mockData);
         CitySearchWrapper.setState({ suggestions: locations });
@@ -51,15 +61,15 @@ describe('<App /> integration', () => { // scope for integration testing
         const allEvents = await getEvents();
         const eventsToShow = allEvents.filter(event => event.location === selectedCity);
         expect(AppWrapper.state('events')).toEqual(eventsToShow);
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
     });
     test('get list of all events when user selects "See all cities"', async () => {
-        const AppWrapper = mount(<App />);
+        //const AppWrapper = mount(<App />);
         const suggestionItems = AppWrapper.find(CitySearch).find('.suggestions li');
         await suggestionItems.at(suggestionItems.length - 1).simulate('click'); // last element in suggestionItems is "See all cities"
         const allEvents = await getEvents();
         expect(AppWrapper.state('events')).toEqual(allEvents);
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
     });
 
     test('Render EventList with max length according to numberOfEvents state', async () => {
@@ -71,17 +81,17 @@ describe('<App /> integration', () => { // scope for integration testing
         AppWrapper.unmount();
     });
     test('Change max length of event list when NumberOfEvents input value changes', async () => {
-        const AppWrapper = mount(<App />);
+        //const AppWrapper = mount(<App />);
         const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
         const eventObject = { target: { value: 3 } };
         await NumberOfEventsWrapper.find('.numberInput').simulate('change', eventObject);
         expect(AppWrapper.state('numberOfEvents')).toEqual(NumberOfEventsWrapper.state('number'));
         const EventListWrapper = AppWrapper.find(EventList);
         expect(EventListWrapper.props().events.length).toBeLessThanOrEqual(NumberOfEventsWrapper.state('number'));
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
     });
     test('keep max length of event list when city is selected', async () => {
-        const AppWrapper = mount(<App />);
+        //const AppWrapper = mount(<App />);
         const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
         const CitySearchWrapper = AppWrapper.find(CitySearch);
         const EventListWrapper = AppWrapper.find(EventList);
@@ -95,6 +105,6 @@ describe('<App /> integration', () => { // scope for integration testing
         await CitySearchWrapper.instance().handleItemClicked(selectedCity); // async because handleItemClicked also leads to a call of getEvents()
         expect(EventListWrapper.props().events.length).toBeLessThanOrEqual(NumberOfEventsWrapper.state('number'));
         expect(AppWrapper.state('numberOfEvents')).toEqual(NumberOfEventsWrapper.state('number'));
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
     });     
 });
