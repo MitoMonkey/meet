@@ -64,8 +64,8 @@ componentDidMount() {
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <EventList events={this.state.events.slice(0, this.state.numberOfEvents)} />
         <NumberOfEvents updateListLength={this.updateListLength} />
+        <EventList events={this.state.events.slice(0, this.state.numberOfEvents)} />
       </div>
     );
   }

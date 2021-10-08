@@ -67,6 +67,13 @@ export const getEvents = async () => {
         return mockData;
     }
 
+    // check if the device is online, if it isn't, load data from localStorage
+    if (!navigator.onLine) {
+        const data = localStorage.getItem("lastEvents");
+        NProgress.done();
+        return data ? JSON.parse(data).events : [];
+    }
+    // if online, get the events from the calender API
     const token = await getAccessToken();
     if (token) {
         removeQuery(); // remove the "code" from the URL
@@ -74,7 +81,7 @@ export const getEvents = async () => {
         const result = await axios.get(url);
         if (result.data) {
             var locations = extractLocations(result.data.events);
-            localStorage.setItem("lastEvents", JSON.stringify(result.data));
+            localStorage.setItem("lastEvents", JSON.stringify(result.data)); // JSON.stringify(events) is necessary because events is a list, but localStorage can only store strings.
             localStorage.setItem("locations", JSON.stringify(locations));
         }
         NProgress.done();
