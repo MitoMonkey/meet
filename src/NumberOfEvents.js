@@ -26,7 +26,7 @@ class NumberOfEvents extends Component {
     render() {
         return (
             <div className="NumberOfEvents">
-                <label htmlFor="numberInput">Limit length of event list to:</label><br/>
+                <label htmlFor="numberInput">Limit length of event list to:</label>
                 <input
                     type="number"
                     className="numberInput"
