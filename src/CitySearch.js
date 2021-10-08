@@ -22,7 +22,7 @@ class CitySearch extends Component {
             return this.setState({
                 query: value,
                 suggestions,
-                infoText: ''
+                infoText: null
             });
         }
     };        
@@ -30,7 +30,7 @@ class CitySearch extends Component {
         this.setState({
             query: suggestion,
             showSuggestions: false,
-            infoText: ''
+            infoText: null
         });
         this.props.updateEvents(suggestion);
     }
@@ -44,6 +44,7 @@ class CitySearch extends Component {
             <div className="CitySearch">
                 <InfoAlert className="InfoAlert" text={this.state.infoText} />
                 <label htmlFor="city">Choose city</label>
+                <div className="citySearchContainer">
                 <input
                     type="text"
                     className="city"
@@ -63,6 +64,7 @@ class CitySearch extends Component {
                         <b>See all cities</b>
                     </li>
                 </ul>
+                </div>
             </div>
         );
     }

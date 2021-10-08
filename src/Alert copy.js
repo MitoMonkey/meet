@@ -3,22 +3,20 @@ import React, { Component } from 'react';
 class Alert extends Component {
     constructor(props) {
         super(props);
-        this.border = null;
+        this.color = null;
         this.className = '';
     }
 
     getStyle = () => {
         return {
-            border: this.border            
+            color: this.color            
         };
     }
 
     render() {
         return (
             <div className="Alert">
-                {(this.props.text)
-                ?<p style={this.getStyle()} className={this.className}>{this.props.text}</p>
-                : null}
+                <p style={this.getStyle()} className={this.className}>{this.props.text}</p>
             </div>
         );
     }
@@ -27,14 +25,14 @@ class Alert extends Component {
 class InfoAlert extends Alert {
     constructor(props) {
         super(props);
-        this.border = '2px solid blue';
+        this.color = 'blue';
         this.className = 'InfoAlert';
     }
 }
 class ErrorAlert extends Alert {
     constructor(props) {
         super(props);
-        this.border = '2px solid red';
+        this.color = 'red';
         this.className = 'ErrorAlert';
     }
 }

@@ -22,7 +22,7 @@ p {
 }
 
 label {
-  color: #ff9800;
+  color: #f1f1f1;
   padding: 10px;
 }
 
@@ -58,17 +58,21 @@ input[type="number"] {
   position: relative;
 }
 
+.citySearchContainer{
+  text-align: center;
+}
+
 .numberInput {
   text-align: center;
 }
 
 .suggestions {
   width: 250px;
-  position: static;
+  position: absolute;
+  left: 25px;
   z-index: 2;
   align-self: center;
   margin: 0;
-  top: 60px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -90,7 +94,7 @@ input[type="number"] {
 }
 
 .event {
-  padding: 10px 10px 35px;
+  padding: 10px 10px 10px;
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
@@ -106,13 +110,14 @@ input[type="number"] {
 }
 
 .details-btn {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+  position: static;
   padding: 5px 8px;
+  margin: 5px; 
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  background-color: #009688;
+  color: #f1f1f1;
 }
 
 .name {
@@ -151,11 +156,12 @@ input[type="number"] {
 .Alert {
   position: static;
   top: 50px;
+  color: #ff9800;
 }
-.InfoAlert {
+.InfoAlertT {
   text-shadow: 0 0 2px red, 0 0 8px white;
 }
-.ErrorAlert {
+.ErrorAlertT {
   text-shadow: 0 0 2px black, 0 0 25px blue, 0 0 8px darkblue;
 }
 
