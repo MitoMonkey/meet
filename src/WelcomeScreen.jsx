@@ -2,7 +2,8 @@ import React from "react";
 import './WelcomeScreen.css';
 
 function WelcomeScreen(props) {
-    return (
+    return props.showWelcomeScreen ?
+        (
             <div className="WelcomeScreen">
                 <h2>Welcome to the Meet app</h2>
                 <h4>
@@ -23,7 +24,8 @@ function WelcomeScreen(props) {
                     Privacy policy
                 </a>
             </div>
-    )            
+        )
+        : null
 }
 
 export default WelcomeScreen;

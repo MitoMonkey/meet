@@ -49,8 +49,8 @@ class App extends Component {
       });
   }
 
-async componentDidMount() {
-    this.mounted = true; 
+  async componentDidMount() {
+    this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
@@ -59,10 +59,10 @@ async componentDidMount() {
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) { // necessary because otherwise the JEST test finishes and unmounts the component before getEvents() is finished and hence the test produces an error
-          this.setState({ events , locations: extractLocations(events) });
+          this.setState({ events, locations: extractLocations(events) });
         }
       });
-   }
+    }
   }
   componentWillUnmount() {
     this.mounted = false;
@@ -70,13 +70,12 @@ async componentDidMount() {
 
   render() {
     if (this.state.showWelcomeScreen === undefined) return <div className="App" />
-    if (this.state.showWelcomeScreen === true) return <WelcomeScreen getAccessToken={() => { getAccessToken() }} />
     return (
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateListLength={this.updateListLength} />
         <EventList events={this.state.events.slice(0, this.state.numberOfEvents)} />
-        
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
