@@ -107,7 +107,7 @@ App is according to [Lighthouse’s PWA checklist](https://developers.google.com
 * (React Bootstrap for styling)
 * axios (async/await) for AJAX
 * nprogress package to display a progress bar while events are fetched
-* recharts to display charts
+* recharts to display a chart
 * Jest and Enzyme (shallow rendering for unit-testing & full rendering for integration-testing) (testfiles in "tests" folder)
 * Jest-Cucumber (BDD acceptance testing) (tesfiles in "features" folder)
 * Puppeteer (end-to-end tests) (testfiles in "tests" folder)

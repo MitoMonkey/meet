@@ -9,7 +9,14 @@
 }
 
 h1 {
-  font-size: 1em;
+  font-size: 1.5em;
+}
+h1.app_title {
+  font-size: 2em;
+  color: #f1f1f1;
+}
+h2, h4 {
+  color: #f1f1f1;
 }
 a {
   color: #009688;
@@ -112,6 +119,7 @@ input[type="number"] {
   border-radius: 4px;
   position: relative;
   background-color: #f1f1f1;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
 }
 .EventList {
   display: block;
@@ -170,6 +178,11 @@ input[type="number"] {
   color: #ff9800;
 }
 
+.recharts-wrapper {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+}
 
 .data-vis-wrapper {
   display: flex;

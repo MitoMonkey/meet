@@ -6,6 +6,7 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 class App extends Component {
   state = {
@@ -23,60 +24,75 @@ class App extends Component {
       });
     });
   } 
-/*   updateEvents = (location, eventCount) => {
-    getEvents().then((events) => {
-      // let eventsToRender;
-      if (location) {
-        events = (location === 'all') ? events : events.filter((event) => event.location === location);
-        this.setState({
-          events: events
-        });
-      }
-      if (eventCount) {
-        events = (eventCount) ? events.slice(0, eventCount) : events;
-        this.setState({
-          numberOfEvents: eventCount,
-          events: events // PROPLEM: If location is undefined in this instance, but was set previously, it will be reset now
-        });
-      }
-    });
-  } */
 
   updateListLength = (length) => {
-    //let newEvents = this.state.events.slice(0, length);
     this.setState({
         numberOfEvents: length
       });
   }
 
-async componentDidMount() {
-    this.mounted = true; 
-    const accessToken = localStorage.getItem('access_token');
-    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    const searchParams = new URLSearchParams(window.location.search);
-    const code = searchParams.get("code");
-    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-    if ((code || isTokenValid) && this.mounted) {
+  // local testing version
+  componentDidMount() {
+    this.mounted = true;
       getEvents().then((events) => {
         if (this.mounted) { // necessary because otherwise the JEST test finishes and unmounts the component before getEvents() is finished and hence the test produces an error
-          this.setState({ events , locations: extractLocations(events) });
+          this.setState({ events, locations: extractLocations(events) });
         }
-      });
-   }
+      })
   }
+  // production version below
+/*   async componentDidMount() {
+      this.mounted = true; 
+      const accessToken = localStorage.getItem('access_token');
+      const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+      const searchParams = new URLSearchParams(window.location.search);
+      const code = searchParams.get("code");
+      this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+      if ((code || isTokenValid) && this.mounted) {
+        getEvents().then((events) => {
+          if (this.mounted) { // necessary because otherwise the JEST test finishes and unmounts the component before getEvents() is finished and hence the test produces an error
+            this.setState({ events , locations: extractLocations(events) });
+          }
+        });
+    }
+  } */
   componentWillUnmount() {
     this.mounted = false;
   }
 
+  // prepare data for chart
+  getData = () => {
+    const { locations, events } = this.state;
+    const eventsSlice = events.slice(0, this.state.numberOfEvents);
+    const data = locations.map((location) => {
+      const number = eventsSlice.filter((event) => event.location === location).length;
+      const city = location.split(', ').shift(); // to get only the city (first part of location) without the country (second part)
+      return { city, number };
+    })
+    return data;
+  };
+
   render() {
-    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
-    if (this.state.showWelcomeScreen === true) return <WelcomeScreen getAccessToken={() => { getAccessToken() }} />
+    // if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+    // if (this.state.showWelcomeScreen === true) return <WelcomeScreen getAccessToken={() => { getAccessToken() }} />
     return (
       <div className="App">
+        <h1 className="app_title" >Meet App</h1>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateListLength={this.updateListLength} />
+
+        <h4>Events in each city</h4>
+        <ResponsiveContainer height={400} >
+          <ScatterChart margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis type="category" dataKey="city" name="city" />
+            <YAxis type="number" dataKey="number" name="number of events" />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter data={this.getData()} fill="#009688" />
+          </ScatterChart>
+        </ResponsiveContainer>
+
         <EventList events={this.state.events.slice(0, this.state.numberOfEvents)} />
-        
       </div>
     );
   }
