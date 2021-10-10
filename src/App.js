@@ -32,16 +32,16 @@ class App extends Component {
   }
 
   // local testing version
-  componentDidMount() {
+/*   componentDidMount() {
     this.mounted = true;
       getEvents().then((events) => {
         if (this.mounted) { // necessary because otherwise the JEST test finishes and unmounts the component before getEvents() is finished and hence the test produces an error
           this.setState({ events, locations: extractLocations(events) });
         }
       })
-  }
+  } */
   // production version below
-/*   async componentDidMount() {
+  async componentDidMount() {
       this.mounted = true; 
       const accessToken = localStorage.getItem('access_token');
       const isTokenValid = (await checkToken(accessToken)).error ? false : true;
@@ -55,7 +55,7 @@ class App extends Component {
           }
         });
     }
-  } */
+  }
   componentWillUnmount() {
     this.mounted = false;
   }
@@ -73,8 +73,8 @@ class App extends Component {
   };
 
   render() {
-    // if (this.state.showWelcomeScreen === undefined) return <div className="App" />
-    // if (this.state.showWelcomeScreen === true) return <WelcomeScreen getAccessToken={() => { getAccessToken() }} />
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+    if (this.state.showWelcomeScreen === true) return <WelcomeScreen getAccessToken={() => { getAccessToken() }} />
     return (
       <div className="App">
         <h1 className="app_title" >Meet App</h1>
