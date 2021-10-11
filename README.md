@@ -1,10 +1,6 @@
 # Meet App
 
-A serverless, progressive web application (PWA) allowing users to  
-* view a list of events
-* search for a city and get a list of events hosted in that city
-* view two charts - one that shows how many events will take place in that city on upcoming days, and another
-that visualizes the popularity of event genres in the form of a pie chart.
+A serverless, progressive web application (PWA) showing events
 
 ![screenshot](./public/Screenshot.png)
 
@@ -95,8 +91,7 @@ App is PWA according to [Lighthouse’s PWA checklist](https://developers.google
     * gh-pages package for easy deployment
     * serverless package with aws-nodejs template
     * Serverless functions hosted on AWS lambda (Faas) (used for auth-server)
-    * [Google Calendar API](https://developers.google.com/calendar) (and OAuth2 authentication) to fetch upcoming events 
-    * (React Bootstrap for styling)
+    * [Google Calendar API](https://developers.google.com/calendar) (with OAuth2 authentication) to fetch upcoming events 
     * axios (async/await) for AJAX
     * nprogress package to display a progress bar while events are fetched
     * recharts to display a chart
@@ -110,12 +105,12 @@ The application itself is also hosted on gh-pages to make it shareable and insta
 
 [Live Demo Link](https://MitoMonkey.github.io/meet)
 
-### Run tests
+## Run tests
 * `http-server` (in "static-site-test" folder) - starts a local test server for the OAuth2 process ("auth-server" folder).
 * `npm test` - Starts the Jest test runner, leaving it in watch mode.
 * `npm run coverage` - Starts a Jest unit test run to evaluate test coverage.
 
-### Deployment
+## Deployment
 * `serverless deploy` to update the functions on AWS lambda
 * `npm start` - Starts the development server.
 * `npm run build` - CRA commant to bundle the app into static files for production.
@@ -133,7 +128,7 @@ Format:
 }
 ```
 
-## Author:
+## Author
 👤 **Mito.this**
 - GitHub: [@MitoMonkey](https://github.com/MitoMonkey/)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/michael-flohrsch%C3%BCtz-8a58321b3/)
