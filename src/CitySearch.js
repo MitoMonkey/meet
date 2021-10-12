@@ -34,8 +34,8 @@ class CitySearch extends Component {
         });
         this.props.updateEvents(suggestion);
     }
-    handleFocus = (event) => {
-        event.target.select();
+    handleFocus = (e) => {
+        e.target.select();
         this.setState({ showSuggestions: true });
     }
 
@@ -51,9 +51,9 @@ class CitySearch extends Component {
                     id="city"
                     value={this.state.query}
                     onChange={this.handleInputChanged}
-                    onFocus={this.handleFocus}
+                    onFocus={(e) => this.handleFocus(e)}
                 />
-                <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
+                    <ul className={`suggestions ${(this.state.showSuggestions) ? '' : 'display-none'}`}>
                     {this.state.suggestions.map((suggestion) => (
                         <li 
                             key={suggestion} 

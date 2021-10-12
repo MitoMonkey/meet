@@ -2,7 +2,7 @@ import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
 import {shallow } from 'enzyme';
 import Event from '../Event';
-import { mockData } from '../mock-data';
+import { mockData } from '../mock-data_OLD';
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 const event = mockData[0];

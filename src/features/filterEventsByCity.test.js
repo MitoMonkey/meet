@@ -3,7 +3,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import CitySearch from '../CitySearch';
 import App from '../App';
-import { mockData } from '../mock-data';
+import { mockData } from '../mock-data_OLD';
 import { extractLocations } from '../api';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
@@ -52,7 +52,8 @@ defineFeature(feature, test => {
             expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
             const CitySearchWrapper = AppWrapper.find(CitySearch);
             expect(CitySearchWrapper.state('showSuggestions')).not.toBe(false);
-            expect(AppWrapper.find('.suggestions').prop('style')).not.toContain({display: 'none'});
+            // expect(AppWrapper.find('.suggestions').prop('style')).not.toContain({display: 'none'});
+            expect(AppWrapper.find('.suggestions').hasClass('display-none')).toEqual(true);
         });
 
         when('the user selects a city (e.g., “Berlin, Germany”) from the list', () => {

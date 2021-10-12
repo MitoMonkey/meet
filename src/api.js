@@ -1,4 +1,5 @@
-import { mockData } from './mock-data';
+import { mockData } from './mock-data_OLD'; // only 2 events
+// import { mockData } from './mock-data'; // many events
 import axios from 'axios';
 import NProgress from 'nprogress';
 

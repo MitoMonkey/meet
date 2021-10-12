@@ -48,7 +48,8 @@ class App extends Component {
         }
       })
   } */
-  // production version below
+
+  // production version
   async componentDidMount() {
       this.mounted = true; 
       const accessToken = localStorage.getItem('access_token');

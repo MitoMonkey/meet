@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import CitySearch from '../CitySearch';
-import { mockData } from '../mock-data';
+import { mockData } from '../mock-data_OLD';
 import { extractLocations } from '../api';
 
 describe('<CitySearch /> component', () => {
@@ -62,7 +62,8 @@ describe('<CitySearch /> component', () => {
     test("selecting CitySearch input reveals the suggestions list", () => {
         CitySearchWrapper.find('.city').simulate('focus');
         expect(CitySearchWrapper.state('showSuggestions')).toBe(true);
-        expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
+        // expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
+        expect(CitySearchWrapper.find('.suggestions').hasClass('display-none')).toEqual(false);
     });
     test("selecting a suggestion should hide the suggestions list", () => {
         CitySearchWrapper.setState({
@@ -71,6 +72,7 @@ describe('<CitySearch /> component', () => {
         });
         CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
         expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
-        expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
+        // expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
+        expect(CitySearchWrapper.find('.suggestions').hasClass('display-none')).toEqual(true);
     });
 });

@@ -4,7 +4,7 @@ import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
-import { mockData } from '../mock-data';
+import { mockData } from '../mock-data_OLD';
 import { extractLocations, getEvents } from '../api';
 
 describe('<App /> component', () => { // create "scope" (=a group of related tests) for <App /> component unit testing
@@ -36,7 +36,7 @@ describe('<App /> integration', () => { // scope for integration testing
         //const AppWrapper = mount(<App />);
         AppWrapper.update();
         const AppEventsState = AppWrapper.state('events');
-        console.log('events: ' + AppEventsState);
+        // console.log('events: ' + AppEventsState);
         expect(AppEventsState).not.toEqual(undefined);
         expect(AppWrapper.find(EventList).props().events).toEqual(AppEventsState);
         //AppWrapper.unmount();
