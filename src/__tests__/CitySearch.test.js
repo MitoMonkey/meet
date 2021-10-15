@@ -60,7 +60,7 @@ describe('<CitySearch /> component', () => {
         expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
     });
     test("selecting CitySearch input reveals the suggestions list", () => {
-        CitySearchWrapper.find('.city').simulate('focus');
+        CitySearchWrapper.find('.city').simulate('focus', { target: { select: jest.fn() } });
         expect(CitySearchWrapper.state('showSuggestions')).toBe(true);
         // expect(CitySearchWrapper.find('.suggestions').prop('style')).not.toEqual({ display: 'none' });
         expect(CitySearchWrapper.find('.suggestions').hasClass('display-none')).toEqual(false);
