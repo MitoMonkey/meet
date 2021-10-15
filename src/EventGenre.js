@@ -20,7 +20,7 @@ const EventGenre = ({events}) => {
             })
             return data.filter((genre) => genre.value !== 0);
         };
-        setData(() => getData());
+        setData(getData());
     }, [events]); // listen for changes to the events prop
 
 return (
