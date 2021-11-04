@@ -2,7 +2,10 @@
 
 A serverless, progressive web application (PWA) showing events
 
-![screenshot](./public/Screenshot.png)
+<p float="left">
+<img src="./public/Screenshot1.png" width="300">
+<img src="./public/Screenshot2.png" width="300">
+</p>
 
 ## Key Features
 * Filter events by city
