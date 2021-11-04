@@ -4,8 +4,8 @@ A serverless, progressive web application (PWA) showing events from a mock-data 
 [Live Demo Link](https://MitoMonkey.github.io/meet)
 
 <p float="left">
-<img src="./public/Screenshot-1.png" width="300">
-<img src="./public/Screenshot-2.png" width="300">
+<img src="./public/Screenshot-1.png" width="350">
+<img src="./public/Screenshot-2.png" width="350">
 </p>
 
 ## Key Features
