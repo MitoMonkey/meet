@@ -1,6 +1,7 @@
 # Meet App
+A serverless, progressive web application (PWA) showing events from a mock-data google calendar, including filters and graphs.
 
-A serverless, progressive web application (PWA) showing events
+[Live Demo Link](https://MitoMonkey.github.io/meet)
 
 <p float="left">
 <img src="./public/Screenshot1.png" width="300">
@@ -103,10 +104,6 @@ App is PWA according to [Lighthouse’s PWA checklist](https://developers.google
     * Puppeteer (end-to-end tests) (testfiles in "tests" folder)
 
 The application itself is also hosted on gh-pages to make it shareable and installable. 
-
-## Live Demo
-
-[Live Demo Link](https://MitoMonkey.github.io/meet)
 
 ## Run tests
 * `http-server` (in "static-site-test" folder) - starts a local test server for the OAuth2 process ("auth-server" folder).
