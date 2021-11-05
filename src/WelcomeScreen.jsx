@@ -14,7 +14,11 @@ function WelcomeScreen(props) {
                     </div>
                     <p className="btn-text"><b>Sign in with google</b></p>
                 </div>
-
+                <p>The Meet app is a pure study project.</p>
+                <p>It only uses a mock calender (https://www.googleapis.com/auth/calendar.events.readonly).</p>
+                <p>No user information is saved or used within the application, and personal calendars aren’t accessed.</p>
+                <p>The author is <a className="link" rel="nofollow noopener" href="https://mitomonkey.github.io/Portfolio-Website/index.html">Michael Flohrschütz</a>.</p>
+                <p>The source code of the app can be found in the <a className="link" rel="nofollow noopener" href="https://github.com/MitoMonkey/meet">Github repo</a>.</p>
                 <a
                     className="privacy"
                     href="https://MitoMonkey.github.io/meet/privacy.html"

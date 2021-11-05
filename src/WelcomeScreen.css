@@ -16,7 +16,7 @@ $button-active-blue: #1669F2; */
     background-color: #4285f4;
     border-radius: 2px;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.25); 
-    margin: auto;
+    margin: 15px auto;
 }
 .google-btn:hover {
     box-shadow: 0 0 6px #4285f4;
@@ -55,8 +55,15 @@ a.privacy{
     display: block;
     padding: 15px;
 }
-
 a.privacy:hover {
+    color: #ff9800;
+}
+a.link{
+    color: #f1f1f1;
+    display: block;
+    display: inline;
+}
+a.link:hover {
     color: #ff9800;
 }
 
